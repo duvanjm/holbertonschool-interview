@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """module"""
 
+
 def canUnlockAll(boxes):
     """boxes is a list of lists"""
     for key in range(1, len(boxes) - 1):
