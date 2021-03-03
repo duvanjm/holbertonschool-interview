@@ -4,18 +4,25 @@
 
 def validUTF8(data):
     """ 0. UTF-8 Validation"""
-    for n in data:
-        if count == 0:
-            if (n >> 3) == 0b11110:
-                count = 3
-            elif (n >> 4) == 0b1110:
-                count = 2
-            elif (n >> 5) == 0b110:
-                count = 1
-            elif (n >> 7):
+    n_bytes = 0
+
+    for i in data:
+        byte = format(i, '#010b')[-8:]
+
+        if n_bytes == 0:
+            if byte[0] == '1':
+                n_bytes = len(byte.split('0')[0])
+
+            if n_bytes > 4 or n_bytes == 1:
                 return False
+            elif n_bytes == 0:
+                continue
         else:
-            if (n >> 6) != 0b10:
+            if not (byte[0] == '1' and byte[1] == '0'):
                 return False
-            count -= 1
-    return count == 0
+
+        n_bytes = n_bytes - 1
+
+    if n_bytes != 0:
+        return False
+    return True
