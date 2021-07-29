@@ -43,7 +43,7 @@ avl_t *create_tree(int *array, int start, int size, avl_t *parent)
 	mid = (start + size) / 2;
 	root = create_node(parent, array[mid]);
 
-	if (root == NULL)
+	if (!root)
 		return (NULL);
 
 	root->left = create_tree(array, start, mid - 1, root);
@@ -61,7 +61,7 @@ avl_t *create_tree(int *array, int start, int size, avl_t *parent)
 
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
-	if (array == NULL)
+	if (!array)
 		return (NULL);
 	printf("%ld", size);
 	return (create_tree(array, 0, size - 1, NULL));
