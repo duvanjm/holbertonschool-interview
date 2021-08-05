@@ -44,4 +44,4 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 		prev = l_express;
 	}
 	return (NULL);
-} 
+}
