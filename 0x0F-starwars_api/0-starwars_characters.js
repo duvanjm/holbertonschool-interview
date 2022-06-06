@@ -2,7 +2,7 @@
 
 const request = require('request');
 
-const arg = process.argv[1];const starWarsCharacters = new Promise((resolve, reject) => {
+const id = process.argv[2];const starWarsCharacters = new Promise((resolve, reject) => {
   request.get(
     `https://swapi-api.hbtn.io/api/films/${id}`,
     (error, response, body) => {
